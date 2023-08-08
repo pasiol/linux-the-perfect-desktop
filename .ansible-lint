@@ -1,0 +1,7 @@
+---
+
+exclude_paths:
+  - venv
+
+extra_vars:
+  target_hostname: fedora38-dev

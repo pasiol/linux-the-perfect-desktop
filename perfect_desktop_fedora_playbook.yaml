@@ -1,0 +1,20 @@
+---
+- name: Ping host and test ssh connection
+  hosts: "{{ target_hostname }}"
+  roles:
+    - ping_host
+
+- name: Prepare workstation
+  hosts: "{{ target_hostname }}"
+  roles:
+    - set_hostname
+
+- name: Install packages
+  hosts: "{{ target_hostname }}"
+  roles:
+    - install_packages
+
+- name: Configure Gnome desktop
+  hosts: "{{ target_hostname }}"
+  roles:
+    - fractional_scaling

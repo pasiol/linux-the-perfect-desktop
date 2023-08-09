@@ -1,0 +1,43 @@
+---
+
+- name: Install gnome desktop packages
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ gnome_desktop }}"
+  become: true
+  when: "gnome_desktop_packages"
+
+- name: Install Internet packages
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ internet }}"
+  become: true
+  when: "internet_packages"
+
+- name: Set up multimedia
+  ansible.builtin.include_tasks:
+    multimedia.yaml
+  when: "multimedia"
+
+- name: Install utilities packages
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ utilities }}"
+  become: true
+  when: "utilities_packages"
+
+- name: Install dev packages
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ dev }}"
+  become: true
+  when: "dev_packages"
+
+- name: Install code editor from MS repo
+  ansible.builtin.include_tasks:
+    code.yaml
+  when: "dev_packages"

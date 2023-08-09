@@ -1,0 +1,6 @@
+---
+
+- name: Enable battery-percentage
+  ansible.builtin.command:
+    gsettings set org.gnome.desktop.interface show-battery-percentage true
+  changed_when: true

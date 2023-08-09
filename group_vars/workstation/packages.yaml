@@ -1,0 +1,35 @@
+---
+
+desktop:
+  - gnome-shell-extension-common
+  - gnome-tweaks
+  - gnome-shell-extension-dash-to-dock
+
+internet:
+  - chromium
+
+multimedia:
+  - gimp
+  - darktable
+  - vlc
+  - mpv
+  - gpodder
+
+utilities:
+  - vim
+  - keepassxc
+
+dev_legacy:
+  - golang
+  - make
+  - python310
+  - python39
+  - python38
+
+dev_containers:
+  - kubectl
+  - golang-sigs-k8s-kustomize
+  - podman
+  - podman-compose
+  - skopeo
+  - buildah

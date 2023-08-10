@@ -1,6 +1,0 @@
----
-
-- name: Enable fractional scaling
-  ansible.builtin.command: gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
-  changed_when: true
-  when: "gnome_desktop_packages"

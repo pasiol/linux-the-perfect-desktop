@@ -28,16 +28,3 @@
   with_items: "{{ utilities }}"
   become: true
   when: "utilities_packages"
-
-- name: Install dev packages
-  ansible.builtin.dnf:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ dev }}"
-  become: true
-  when: "dev_packages"
-
-- name: Install code editor from MS repo
-  ansible.builtin.include_tasks:
-    code.yaml
-  when: "dev_packages"

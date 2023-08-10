@@ -1,0 +1,6 @@
+---
+
+- name: Generate ED25519 ssh key for ansible user
+  community.crypto.openssh_keypair:
+    path: '{{ ansible_user_dir }}/.ssh/id_ed25519'
+    type: ed25519

@@ -16,18 +16,15 @@ multimedia:
   - gpodder
 
 utilities:
-  - vim
   - keepassxc
 
-dev_legacy:
+developer_packages:
   - golang
   - make
   - python310
   - python39
   - python38
-
-dev_containers:
-  - kubectl
+  - kubernetes-client
   - golang-sigs-k8s-kustomize
   - podman
   - podman-compose

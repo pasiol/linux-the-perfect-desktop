@@ -3,4 +3,6 @@ gnome_desktop_packages: true
 internet_packages: true
 multimedia: true
 utilities_packages: true
-dev_packages: true
+developer: true
+vscode: true
+vim: true

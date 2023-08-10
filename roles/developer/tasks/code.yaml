@@ -1,30 +1,34 @@
 ---
 
-- name: Verify the the Microsoft key, using a fingerprint, before import
-  ansible.builtin.rpm_key:
-    key: https://packages.microsoft.com/keys/microsoft.asc
-    fingerprint: BC52 8686 B50D 79E3 39D3 721C EB3E 94AD BE12 29CF
-  become: true
+- name: Install the vscode editor on RHEL or Fedora based systems
+  when: ansible_distribution == 'RedHat' or ansible_distribution == 'Fedora'
+  block:
 
-- name: Add official Visual Studio Code repository
-  ansible.builtin.yum_repository:
-    name: vscode
-    description: Visual Studio Code
-    enabled: true
-    file: vscode
-    baseurl: https://packages.microsoft.com/yumrepos/vscode
-    gpgcheck: true
-    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-  become: true
+    - name: Verify the the Microsoft key, using a fingerprint, before import
+      ansible.builtin.rpm_key:
+        key: https://packages.microsoft.com/keys/microsoft.asc
+        fingerprint: BC52 8686 B50D 79E3 39D3 721C EB3E 94AD BE12 29CF
+      become: true
 
-- name: Update package cache
-  ansible.builtin.dnf:
-    name: "*"
-    update_only: true
-  become: true
+    - name: Add official Visual Studio Code repository
+      ansible.builtin.yum_repository:
+        name: vscode
+        description: Visual Studio Code
+        enabled: true
+        file: vscode
+        baseurl: https://packages.microsoft.com/yumrepos/vscode
+        gpgcheck: true
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+      become: true
 
-- name: Install code package
-  ansible.builtin.dnf:
-    name: code
-    state: present
-  become: true
+    - name: Update package cache
+      ansible.builtin.dnf:
+        name: "*"
+        update_only: true
+      become: true
+
+    - name: Install code package
+      ansible.builtin.dnf:
+        name: code
+        state: present
+      become: true

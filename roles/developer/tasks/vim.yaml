@@ -1,0 +1,15 @@
+---
+
+- name: Install package Vim
+  ansible.builtin.package:
+    name: vim
+    state: present
+  become: true
+
+- name: Template file .vimrc.j2 to ansible user home directory
+  ansible.builtin.template:
+    src: .vimrc.j2
+    dest: "/home/{{ ansible_user }}/.vimrc"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0644'

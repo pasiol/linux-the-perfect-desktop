@@ -1,28 +1,24 @@
 ---
-
-- name: Install package python3-psutil
-  become: true
+- name: Install Gnome extensions related packages
   ansible.builtin.package:
-    name: python3-psutil
+    name: "{{ item }}"
     state: present
+  with_items:
+    - gnome-extensions-app.x86_64
+    - gnome-shell-extension-common
+    - gnome-shell-extension-dash-to-dock
+    - gnome-tweaks
+  become: true
 
-# todo: not working
-- name: Enable minimize and maximize buttons on Gnome Windows
-  community.general.dconf:
-    # gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
-    key: /org/gnome/desktop/wm/preferences/minimize-wm-wm-layout
-    value: "'appmenu:minimize,maximize:appmenu'"
-    state: present
-  become_user: user
-
-- name: Enable Gnome dash-to-dock extension
-  community.general.dconf:
-    key: /org/gnome/shell/extensions/dash-to-dock/enable-custom- dash-to-dock
-    value: 'true'
-  become_user: user
-
-- name: Enable fractional scaling
-  ansible.builtin.command: gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+- name: Enable Gnome extensions
+  ansible.builtin.command:
+    "gnome-extensions enable {{ item }}"
   changed_when: true
-  when: "gnome_desktop_packages"
   become_user: user
+  with_items: "{{ gnome_extensions }}"
+
+- name: Loop gnome settings
+  ansible.builtin.include_tasks:
+    file: gsetting.yaml
+  with_items: "{{ gnome_settings }}"
+  when: "gnome_desktop_packages"

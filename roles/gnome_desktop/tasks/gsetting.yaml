@@ -1,0 +1,14 @@
+---
+- name: "Get setting state {{ item.description }}"
+  ansible.builtin.command:
+    "gsettings get {{ item.path }} {{ item.key }}"
+  register: gnome_setting_state
+  changed_when: true
+  become_user: user
+
+- name: "Set Gnome setting {{ item.description }}"
+  ansible.builtin.command:
+    "gsettings set {{ item.path }} {{ item.key }} {{ item.value }}"
+  changed_when: gnome_setting_state.stdout != item.value
+  become_user: user
+  when: gnome_setting_state.stdout != item.value

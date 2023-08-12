@@ -1,0 +1,18 @@
+---
+gnome_settings:
+  - setting:
+    description: "minimize, maximize and close buttons on the window header bar"
+    path: "org.gnome.desktop.wm.preferences"
+    key: "button-layout"
+    value: "'appmenu:minimize,maximize,close'"
+
+  - setting:
+    description: "fractional scaling for multiscreen setups"
+    path: "org.gnome.mutter"
+    key: "experimental-features"
+    value: "['scale-monitor-framebuffer']"
+
+gnome_extensions:
+  - apps-menu@gnome-shell-extensions.gcampax.github.com
+  - background-logo@fedorahosted.org
+  - dash-to-dock@micxgx.gmail.com

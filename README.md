@@ -1,4 +1,4 @@
-# Linux the Perfect Desktop
+# Linux the Perfect Desktop - Ansible playbook
 
 Customize your Linux desktop environment with Ansible playbook "Linux the perfect desktop".
 
@@ -16,7 +16,7 @@ Customize your Linux desktop environment with Ansible playbook "Linux the perfec
 - Flatpaks
 - Nvidia/Cuda driver installation
 - Virtualiazation host
-- Automate local the testing with cloud image
+- Automate the local testing with cloud image
 - Hardening
 - Debian 12
 - Fedora 39

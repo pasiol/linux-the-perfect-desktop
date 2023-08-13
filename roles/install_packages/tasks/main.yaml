@@ -1,13 +1,4 @@
 ---
-
-- name: Install gnome desktop packages
-  ansible.builtin.dnf:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ gnome_desktop }}"
-  become: true
-  when: "gnome_desktop_packages"
-
 - name: Install Internet packages
   ansible.builtin.dnf:
     name: "{{ item }}"
@@ -21,7 +12,7 @@
     multimedia.yaml
   when: "multimedia"
 
-- name: Install utilities packages
+- name: Install utilities
   ansible.builtin.dnf:
     name: "{{ item }}"
     state: present

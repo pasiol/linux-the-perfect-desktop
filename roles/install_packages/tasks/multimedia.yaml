@@ -22,7 +22,7 @@
   become_user: root
   become: true
 
-- name: Upgrade all packages
+- name: Enable repo fedora-cisco-openh264
   ansible.builtin.dnf:
     enablerepo:
       - fedora-cisco-openh264

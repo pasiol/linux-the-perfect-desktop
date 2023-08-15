@@ -10,7 +10,7 @@ gnome_settings:
     description: "fractional scaling for multimonitor setups"
     path: "org.gnome.mutter"
     key: "experimental-features"
-    value: "['scale-monitor-framebuffer']"
+    value: "\"['scale-monitor-framebuffer']\""
 
   - setting:
     description: "show battery percentage"

@@ -1,6 +1,0 @@
----
-gnome_desktop_packages: false
-internet_packages: true
-multimedia: false
-utilities_packages: true
-dev_packages: true

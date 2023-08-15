@@ -1,25 +1,27 @@
 ---
 all:
   hosts:
-    fedora38-dev:
+    ws-basic:
       ansible_host: 192.168.122.100
       ip: 192.168.122.100
       access_ip: 192.168.122.100
-      hostname: fedora38-dev
+      hostname: ws-basic
       linux_user: "user"
       desktop_type: "laptop"
-    fedora38-prod:
+    ws-dev:
       ansible_host: 127.0.0.1
       ip: 127.0.0.1
       access_ip: 127.0.0.1
-      hostname: fedora38-ws
+      hostname: ws-dev
       linux_user: "user"
-      connection: local
   children:
-    workstation:
+    workstation_all:
       hosts:
-        fedora38-dev:
-        fedora38-prod:
-    dev:
+        ws-basic:
+        ws-dev:
+    workstation_basic:
       hosts:
-        fedora38-dev:
+        ws-basic:
+    workstation_developer:
+      hosts:
+        ws-dev:

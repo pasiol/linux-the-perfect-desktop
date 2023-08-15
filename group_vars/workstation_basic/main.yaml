@@ -1,0 +1,8 @@
+---
+gnome_desktop_packages: true
+internet_packages: true
+multimedia: true
+utilities: true
+developer: false
+vscode: false
+vim: true

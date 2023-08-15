@@ -3,7 +3,7 @@
   ansible.builtin.command:
     "gsettings get {{ item.path }} {{ item.key }}"
   register: gnome_setting_state
-  changed_when: true
+  changed_when: false
   become_user: user
 
 - name: "Set Gnome setting {{ item.description }}"

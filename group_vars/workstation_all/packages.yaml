@@ -25,3 +25,4 @@ developer_packages:
   - podman-compose
   - skopeo
   - buildah
+  - helm

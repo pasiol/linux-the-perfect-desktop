@@ -1,6 +1,12 @@
 ---
+- name: Ensure .ssh directory existence
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.ssh"
+    state: directory
+    mode: "0700"
+
 
 - name: Generate ED25519 ssh key for ansible user
   community.crypto.openssh_keypair:
-    path: '{{ ansible_user_dir }}/.ssh/id_ed25519'
+    path: "{{ ansible_user_dir }}/.ssh/id_ed25519"
     type: ed25519

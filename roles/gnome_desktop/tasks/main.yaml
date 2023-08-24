@@ -1,25 +1,8 @@
 ---
-- name: Install Gnome extensions related packages
-  ansible.builtin.package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - gnome-extensions-app.x86_64
-    - gnome-shell-extension-common
-    - gnome-shell-extension-dash-to-dock
-    - gnome-tweaks
-  become: true
-  notify: Reboot host
+- name: Include task install_extensions.yaml
+  ansible.builtin.include_tasks: 
+    file: install_extensions.yaml
 
-- name: Enable Gnome extensions
-  ansible.builtin.command:
-    "gnome-extensions enable {{ item }}"
-  changed_when: true
-  become_user: user
-  with_items: "{{ gnome_extensions }}"
-
-- name: Loop gnome settings
-  ansible.builtin.include_tasks:
-    file: gsetting.yaml
-  with_items: "{{ gnome_settings }}"
-  when: "gnome_desktop_packages"
+- name: Include task enable_extensions.yaml
+  ansible.builtin.include_tasks: 
+    file: enable_extensions.yaml

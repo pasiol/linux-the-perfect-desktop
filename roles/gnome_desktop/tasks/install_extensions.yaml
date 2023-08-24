@@ -1,0 +1,12 @@
+---
+- name: Install Gnome extensions related packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - gnome-extensions-app.x86_64
+    - gnome-shell-extension-common
+    - gnome-shell-extension-dash-to-dock
+    - gnome-tweaks
+  become: true
+  notify: Reboot host

@@ -1,0 +1,13 @@
+---
+- name: Enable Gnome extensions
+  ansible.builtin.command:
+    "gnome-extensions enable {{ item }}"
+  changed_when: true
+  become_user: user
+  with_items: "{{ gnome_extensions }}"
+
+- name: Loop gnome settings
+  ansible.builtin.include_tasks:
+    file: gsetting.yaml
+  with_items: "{{ gnome_settings }}"
+  when: "gnome_desktop_packages"

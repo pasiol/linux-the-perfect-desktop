@@ -8,7 +8,6 @@
   hosts: "{{ target_hostname }}"
   roles:
     - set_hostname
-    - generate_ssh_keys
 
 - name: Install developer packages
   hosts: "{{ target_hostname }}"
@@ -20,7 +19,12 @@
   roles:
     - install_packages
 
-- name: Configure Gnome desktop
+- name: Configure virtualization
   hosts: "{{ target_hostname }}"
   roles:
-    - gnome_desktop
+    - virtualization
+
+- name: Configure cockpit
+  hosts: "{{ target_hostname }}"
+  roles:
+    - cockpit

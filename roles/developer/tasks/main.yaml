@@ -1,5 +1,4 @@
 ---
-
 - name: Running developer related tasks
   when: "developer"
   block:
@@ -8,15 +7,10 @@
       ansible.builtin.dnf:
         name: "{{ item }}"
         state: present
-      with_items: "{{ developer_packages }}"
+      with_items: "{{ packages_developer }}"
       become: true
 
     - name: Include task code if vscode is enabled
       ansible.builtin.include_tasks:
         file: code.yaml
       when: "vscode"
-
-    - name: Include task vim if vim is enabled
-      ansible.builtin.include_tasks:
-        file: vim.yaml
-      when: "vim"

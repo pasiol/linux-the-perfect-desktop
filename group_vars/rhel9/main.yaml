@@ -1,0 +1,20 @@
+---
+target_architecture: x86_64
+target_ansible_distribution: "RedHat"
+target_ansible_distribution_major_version: "9"
+
+packages_developer:
+  - golang-bin
+  - python3.9
+  - python3.11
+  - make
+
+packages_internet:
+  - chromium
+
+packages_multimedia:
+  - gimp
+  - darktable
+
+packages_utilities:
+  - keepassxc

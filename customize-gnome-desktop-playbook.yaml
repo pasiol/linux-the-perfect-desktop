@@ -1,0 +1,5 @@
+---
+- name: Configure Gnome desktop
+  hosts: "{{ target_hostname }}"
+  roles:
+    - gnome_desktop

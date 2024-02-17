@@ -1,0 +1,48 @@
+---
+- name: Enable rpmfusion repo
+  ansible.builtin.shell: |
+    dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  changed_when: true
+  become: true
+
+- name: Upgrade all packages
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+    update_only: true
+  become_user: root
+  become: true
+
+- name: Enable repo fedora-cisco-openh264
+  ansible.builtin.dnf:
+    enablerepo:
+      - fedora-cisco-openh264
+  become: true
+
+- name: Install multimedia from rpmfusion
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+    exclude:
+      - lame-devel
+      - gstreamer1-plugins-bad-free-devel
+      - ffmpeg gstreamer-ffmpeg
+  become: true
+  with_items:
+    - gstreamer1-plugins-bad-*
+    - gstreamer1-plugins-good-*
+    - gstreamer1-plugins-ugly-*
+    - gstreamer1-plugins-base
+    - gstreamer1-libav
+    - lame*
+    - gstreamer1-plugin-openh264
+    - mozilla-openh264
+
+- name: Install multimedia optional packages from rpmfusion
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - "{{ packages_multimedia_rpmfusion }}"

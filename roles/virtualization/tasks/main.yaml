@@ -1,0 +1,9 @@
+---
+- name: Run virtualiazation
+  when: virtualization
+  block:
+
+    - name: Include task rhel9.yaml if distribution Red Hat and version is 9
+      ansible.builtin.include_tasks:
+        file: rhel9.yaml
+      when: ansible_distribution == "RedHat" and ansible_distribution_major_version == "9"

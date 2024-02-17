@@ -1,21 +1,33 @@
 ---
+- name: Include task epel_repo if distribution is supported
+  ansible.builtin.include_tasks:
+    file: "{{ target_ansible_distribution | lower }}_epel_repo.yaml"
+  when: |
+    "ansible_distribution == target_ansible_distribution and
+    ansible_distribution_major_version == target_ansible_distribution_major_version"
+
 - name: Install Internet packages
   ansible.builtin.dnf:
     name: "{{ item }}"
     state: present
-  with_items: "{{ internet }}"
+  with_items: "{{ packages_internet }}"
   become: true
-  when: "internet_packages"
+  when: "internet"
 
 - name: Set up multimedia
   ansible.builtin.include_tasks:
     multimedia.yaml
   when: "multimedia"
 
+- name: Set up rpm fusion codecs
+  ansible.builtin.include_tasks:
+    fedora_rpmfusion_multimedia.yaml
+  when: "multimedia and ansible_distribution == 'Fedora'"
+
 - name: Install utilities
   ansible.builtin.dnf:
     name: "{{ item }}"
     state: present
-  with_items: "{{ utilities }}"
+  with_items: "{{ packages_utilities }}"
   become: true
   when: "utilities"

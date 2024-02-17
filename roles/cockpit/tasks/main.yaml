@@ -1,0 +1,16 @@
+---
+- name: Install cockpit packages
+  become: true
+  ansible.builtin.package:
+    name:
+      - cockpit
+      - cockpit-composer
+      - cockpit-machines
+      - cockpit-navigator
+      - cockpit-networkmanager
+      - cockpit-podman
+      - cockpit-session-recording
+      - cockpit-storaged
+      - cockpit-system
+      - cockpit-pcp
+  notify: Reread systemd config and start cockpit

@@ -17,7 +17,12 @@ gnome_settings:
     path: "org.gnome.desktop.interface"
     key: "show-battery-percentage"
     value: "true"
-    desktop_type: "laptop"
+    #desktop_type: "laptop"
+
+packages_gnome:
+  - gnome-shell-extension-common
+  - gnome-tweaks
+  - gnome-shell-extension-dash-to-dock
 
 gnome_extensions:
   - apps-menu@gnome-shell-extensions.gcampax.github.com

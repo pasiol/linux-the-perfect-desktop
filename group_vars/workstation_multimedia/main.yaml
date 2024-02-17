@@ -1,7 +1,7 @@
 ---
 gnome_customize: true
 internet: true
-multimedia: false
+multimedia: true
 utilities: true
 virtualization: false
 developer: false

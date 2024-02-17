@@ -4,7 +4,8 @@ Customize your Linux desktop environment with Ansible playbook "Linux the perfec
 
 ## Supported distributions
 
-- Fedora38 (working on)
+- Fedora39 (working on)
+- RHEL9 (working on)
 
 ## Running playbook
 
@@ -12,11 +13,11 @@ Customize your Linux desktop environment with Ansible playbook "Linux the perfec
 
 ## Roadmap
 
+- RHEL9 (on progress)
 - Gnome settings (on progress)
 - Flatpaks
 - Nvidia/Cuda driver installation
-- Virtualiazation host
+- Virtualiazation host (on progress)
 - Automate the local testing with cloud image
-- Hardening
-- Debian 12
-- Fedora 39
+- Fedora 39 (on progress)
+- Cockpit (on progress)

@@ -1,8 +1,12 @@
 ---
-- name: Include task install_extensions.yaml
-  ansible.builtin.include_tasks: 
-    file: install_extensions.yaml
+- name: Customize Gnome desktop
+  when: gnome_customize
+  block:
 
-- name: Include task enable_extensions.yaml
-  ansible.builtin.include_tasks: 
-    file: enable_extensions.yaml
+    - name: Include task install_extensions.yaml
+      ansible.builtin.include_tasks:
+        file: install_extensions.yaml
+
+    - name: Include task enable_extensions.yaml
+      ansible.builtin.include_tasks:
+        file: enable_extensions.yaml

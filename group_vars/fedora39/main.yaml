@@ -1,0 +1,33 @@
+---
+target_architecture: x86_64
+target_ansible_distribution: "Fedora"
+
+packages_multimedia:
+  - gimp
+  - darktable
+  - vlc
+  - mpv
+  - gpodder
+
+packages_developer:
+  - golang
+  - make
+  - python311
+  - python310
+  - kubernetes-client
+  - golang-sigs-k8s-kustomize
+  - podman
+  - podman-compose
+  - skopeo
+  - buildah
+  - helm
+
+packages_internet:
+  - chromium
+
+packages_utilities:
+  - keepassxc
+
+packages_multimedia_rpmfusion:
+  - vlc
+  - mpv

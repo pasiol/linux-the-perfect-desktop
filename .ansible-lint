@@ -3,5 +3,11 @@
 exclude_paths:
   - venv
 
+warn_list:
+  - command-instead-of-module
+
+skip_list:
+  - command-instead-of-module
+
 extra_vars:
   target_hostname: fedora38-dev

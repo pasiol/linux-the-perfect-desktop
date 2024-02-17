@@ -1,27 +1,46 @@
 ---
 all:
   hosts:
-    ws-basic:
-      ansible_host: 192.168.122.100
-      ip: 192.168.122.100
-      access_ip: 192.168.122.100
-      hostname: ws-basic
-      linux_user: "user"
-      desktop_type: "laptop"
-    ws-dev:
-      ansible_host: 127.0.0.1
-      ip: 127.0.0.1
-      access_ip: 127.0.0.1
-      hostname: ws-dev
-      linux_user: "user"
+    ws-fedora39-basic:
+      ansible_host: 192.168.122.101
+      gnome_desktop_user: "test-user"
+      hostname: "fedora9-basic-dev.localdomain.local"
+    ws-fedora39-dev:
+      ansible_host: 192.168.122.102
+      gnome_desktop_user: "test-user"
+      hostname: "fedora9-developer-dev.localdomain.local"
+    ws-fedora39-multimedia:
+      ansible_host: 192.168.122.103
+      gnome_desktop_user: "test-user"
+      hostname: "fedora9-multimedia-dev.localdomain.local"
+    ws-rhel9-dev:
+      ansible_host: 192.168.122.104
+      hostname: "rhel9-developer-dev.localdomain.local"
+      gnome_desktop_user: "test-user"
   children:
-    workstation_all:
+    workstation:
       hosts:
-        ws-basic:
-        ws-dev:
+        ws-fedora39-basic:
+        ws-fedora39-multimedia:
+        ws-fedora39-dev:
+        ws-rhel9-dev:
+    gnome_desktop:
+      hosts:
+        ws-rhel9-dev:
+        ws-fedora39-basic:
+        ws-fedora39-multimedia:
+        ws-fedora39-dev:
+    rhel9:
+      hosts:
+        ws-rhel9-dev:
     workstation_basic:
       hosts:
-        ws-basic:
+        ws-fedora39-basic:
+        ws-fedora39-multimedia:
+    workstation_multimedia:
+      hosts:
+        ws-fedora39-multimedia: 
     workstation_developer:
       hosts:
-        ws-dev:
+        ws-fedora39-dev:
+        ws-rhel9-dev:

@@ -1,0 +1,25 @@
+---
+- name: List enabled repositories
+  ansible.builtin.command:
+    cmd: yum repolist
+  register: repo_list
+  changed_when: false
+  check_mode: false
+
+- name: Set fact repo_name
+  ansible.builtin.set_fact:
+    repo_name: "codeready-builder-for-rhel-9-{{ target_architecture }}-rpms"
+
+- name: Enable CodeReady Linux Builder repository
+  ansible.builtin.command:
+    cmd: "subscription-manager repos --enable {{ repo_name }}"
+  register: _result
+  changed_when: _result.rc == 0
+  when: "'codeready-builder-for-rhel-9-$(arch)-rpms' not in repo_list.stdout"
+  become: true
+
+- name: Enable epel repository
+  ansible.builtin.dnf:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+    state: present
+  become: true

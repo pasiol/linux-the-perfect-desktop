@@ -1,8 +1,9 @@
 ---
-gnome_desktop_packages: true
-internet_packages: true
-multimedia: true
-utilities_packages: true
+gnome_customize: false
+internet: true
+multimedia: false
+utilities: true
+virtualization: false
 developer: true
 vscode: true
 vim: true

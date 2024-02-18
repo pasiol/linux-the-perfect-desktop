@@ -15,6 +15,7 @@ packages_internet:
 packages_multimedia:
   - gimp
   - darktable
+  - kdenlive
 
 packages_utilities:
   - keepassxc
